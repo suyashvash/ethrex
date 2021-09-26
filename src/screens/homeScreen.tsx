@@ -1,33 +1,32 @@
 import logo from '../screens/assets/logo.png'
-import { AiFillHome, AiFillSetting } from 'react-icons/ai'
-import { BiCameraMovie, BiLogOut } from 'react-icons/bi'
-import { FiMonitor } from 'react-icons/fi'
-import { MdMovie } from 'react-icons/md'
-import { GiPopcorn } from 'react-icons/gi'
+
 
 export default function HomeScreen() {
     return (
         <>
-            <div className="base-flex side-bar">
-                <div className="base-flex side-bar-div">
+            <nav className="base-flex nav-bar">
+                <div className="base-flex nav-bar-div logo-holder">
                     <img className="logo" src={logo} alt="" />
                 </div>
 
-                <div className="base-flex side-bar-div">
-                    <a href="" className="base-flex nav-links"><AiFillHome size={22} /> <span>Home</span></a>
-                    <a href="" className="base-flex nav-links"><BiCameraMovie size={22} /><span>Movies</span></a>
-                    <a href="" className="base-flex nav-links"><FiMonitor size={22} /><span>TV Shows</span></a>
-                    <a href="" className="base-flex nav-links"><MdMovie size={22} /><span>Series</span></a>
+                <div className="base-flex nav-bar-div nav-link-holder">
+                    <a className="base-flex nav-links"> Home</a>
+                    <a className="base-flex nav-links">Movies</a>
+                    <a className="base-flex nav-links">Shows</a>
+                    <a className="base-flex nav-links">Series</a>
+                    <a className="base-flex nav-links">Fav</a>
 
-                    <a href="" className="base-flex nav-links"><GiPopcorn size={22} /><span>Fav</span></a>
-                    <a href="" className="base-flex nav-links"><AiFillSetting size={22} /><span>Settings</span></a>
                 </div>
 
-                <div className="base-flex side-bar-div">
-                    <a href="" className="base-flex nav-links log-out"><BiLogOut size={22} /><span>Log-Out</span></a>
+                <div className="base-flex nav-bar-div logout-holder">
+                    <a className="base-flex nav-links user-links">Settings</a>
+                    <a href="" className="base-flex nav-links user-links"><span>Log-Out</span></a>
                 </div>
+
+            </nav>
+            <div className="base-flex main-body">
+
             </div>
-            <div className="base-flex main-body">Hello</div>
         </>
 
     )

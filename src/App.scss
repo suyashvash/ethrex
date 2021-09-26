@@ -1,5 +1,4 @@
 
-
   $base: rgb(17, 17, 17);
 
 .base-flex{
@@ -15,53 +14,51 @@
   height: 100vh;
   color: white;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 
-.side-bar{
-  width: 19%;
-  height: 100%;
-
-  flex-direction: column;
+.nav-bar{
+  width: 100%;
+  padding-top: 10px;
+  flex-direction: row;
   justify-content: space-around;
 
-  .side-bar-div{
-    flex-direction: column;
+  .nav-bar-div{
+    flex-direction: row;
     width: 100%;
-    img.logo{width: 60%;}
-
-
+    img.logo{width: 120px;}
     a{
-      padding: 10px 20px;
+      padding: 5px 10px;
       text-decoration: none;
-      width: 60%;
       text-align: left;
-
+      cursor: pointer;
       border-radius: 8px;
       transition: ease 0.5s;
       justify-content: flex-start;
+      margin: 7px 1px;
+     }
 
-      margin: 7px 5px;
-      span{
-        margin-left: 10px;
-      }
-    }
-
-    a:active,a:visited{
-      color: white;
-    }
+    a:active,a:visited{color: white;}
 
     a:hover{
       background-color: rgba(71, 71, 71, 0.801);
       transition: ease 0.5s;
     }
 
-    a.log-out{
+    a.user-links{
       background-color: rgba(71, 71, 71, 0.801);
-      padding: 20px;
+      padding: 10px;
+      width: auto;
+      margin-right: 10px;
     }
 
   }
+
+  .logo-holder{width: 40%;}
+  .nav-link-holder{justify-content: flex-start;}
+  .logout-holder{justify-content: flex-end;}
+
 }
 
 .main-body{
