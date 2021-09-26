@@ -2,6 +2,18 @@
 $base: rgb(17, 17, 17);
 $theme-red :#ec0000;
 
+@font-face {
+  font-family: lato-light;
+  src: url("../src/screens/assets/Lato-Light.ttf");
+}
+
+:root{
+  background-color: $base;
+  
+}
+
+
+
 .base-flex{
   display: flex;
   flex-direction: row;
@@ -66,12 +78,14 @@ $theme-red :#ec0000;
       margin: 7px 1px;
      }
 
-    a:active,a:visited{color: white;}
+    a:visited{color: darkgray;}
+    
 
     a:hover{
-    
+      color: darkgray;
       transition: ease 0.5s;
     }
+
 
     a.user-links{
 
@@ -92,6 +106,7 @@ $theme-red :#ec0000;
   width: 99%;
   justify-content: flex-start;
   flex-direction: column;
+  font-family: lato-light;
   
   
 }
@@ -101,6 +116,7 @@ $theme-red :#ec0000;
   width: 100%;
   height: 590px;
   overflow: hidden;
+  
 
   .banner-img-holder{height: 100%;width: 100%;
     img{width: 100%; height: 100%}
@@ -134,4 +150,66 @@ $theme-red :#ec0000;
     }
 
   }
+}
+
+
+.show-grid{
+  flex-direction: column;
+  width: 100%;
+  margin: 20px 0px;
+  margin-bottom: 10px;
+
+  .grid-wrapper{
+   
+   
+   flex-direction: column;
+    align-items: flex-start;
+    width: 95%;
+    
+    font-size: 1.1rem;
+  
+
+    .grid-holder{
+      overflow: auto;
+      white-space: nowrap;
+      width: 75rem;
+
+  
+      .grid-card{
+        width: 270px;
+        height: 140px;
+        cursor: pointer;
+        background-color: darkgrey;
+        margin: 5px 5px;      
+        display: inline-block;
+        overflow: hidden;
+        transition: ease 0.5s;
+        border-radius: 10px;
+
+        img{
+          width: 100%;
+          height: 100%;
+        }
+
+      }
+
+      .grid-card:hover{
+        transform: scale(110%);
+        margin: 0px 20px;
+        transition: ease 0.5s;
+    
+      }
+
+     
+
+    }
+
+      .grid-holder::-webkit-scrollbar {display: none;}
+      .grid-holder {-ms-overflow-style: none; scrollbar-width: none;}
+  
+  }
+
+
+
+
 }
