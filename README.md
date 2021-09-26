@@ -13,7 +13,7 @@ Watch the Best !
     > My List
     > Comedy
     > Action
-    > Scifi 
+    > Scifi
     >.... some more genres
 
 > TV Shows

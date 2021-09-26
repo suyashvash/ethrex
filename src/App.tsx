@@ -1,9 +1,11 @@
 import '../src/App.scss'
 
+import HomeScreen from './screens/homeScreen';
+
 function App() {
   return (
-    <div className="App">
-      sdf
+    <div className="base-flex App">
+      <HomeScreen />
     </div>
   );
 }
