@@ -23,11 +23,12 @@ $theme-red :#ec0000;
 
 .primary-btn{
   background-color: $theme-red;
-  padding: 10px 15px;
+  padding: 10px 10px;
   color: white;
   text-decoration: none;
   border-radius: 5px;
   margin-top: 10px;
+  margin-left: 5px;
   cursor: pointer;
   transition: ease 0.5s;
 
@@ -168,11 +169,19 @@ $theme-red :#ec0000;
     
     font-size: 1.1rem;
   
+    .grid-head{
+      width: 100%;
+    justify-content: space-between;
+
+      
+    }
 
     .grid-holder{
-      overflow: auto;
+      overflow: scroll;
       white-space: nowrap;
       width: 75rem;
+      scroll-behavior: smooth;
+
 
   
       .grid-card{
@@ -185,19 +194,64 @@ $theme-red :#ec0000;
         overflow: hidden;
         transition: ease 0.5s;
         border-radius: 10px;
+        position: relative;
 
         img{
           width: 100%;
           height: 100%;
         }
 
+        .gird-data{
+          position: absolute;
+          bottom: 0px;
+          width: 100%;
+   
+          height: 100%;
+          background: linear-gradient(359deg, #000000c9,#00000078);
+          width: 95%;
+          justify-content: space-between;
+          padding: 0px 10px;
+          transform: translateY(50%);
+          opacity: 0;
+          
+          transition: ease 0.5s;
+
+          div{
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: flex-end;
+            padding-bottom: 10px;
+          }
+
+          .play-show{
+            cursor: pointer;
+            color: white;
+            
+          }
+          
+          span{
+            font-size: 0.8rem;
+            margin: 0.2rem 0px;
+          }
+
+          h3{
+            margin: 2px;
+          }
+        }
+
       }
 
-      .grid-card:hover{
+      .grid-card:hover {
         transform: scale(110%);
         margin: 0px 20px;
         transition: ease 0.5s;
     
+      }
+
+      .grid-card:hover .gird-data{
+        transform: translateY(0%);
+        opacity: 1;
+      
       }
 
      

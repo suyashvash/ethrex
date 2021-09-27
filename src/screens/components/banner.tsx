@@ -23,7 +23,7 @@ export default function Banner() {
                         unravel a series of extraordinary mysteries.
                     </p>
 
-                    <PrimaryButton title={"Watch Now"} onClick={() => alert("Now playing Stranger Things")} />
+                    <PrimaryButton type={"Play"} title={"Watch Now"} onClick={() => alert("Now playing Stranger Things")} />
 
 
                 </div>

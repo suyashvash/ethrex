@@ -12,11 +12,56 @@ import show5 from '../screens/assets/rickMortyVideo.jpg'
 export default function HomeScreen() {
 
     const TVshows = [
-        { showUrl: show1 },
-        { showUrl: show2 },
-        { showUrl: show3 },
-        { showUrl: show4 },
-        { showUrl: show5 },
+        {
+            showUrl: show1,
+            showName: "13 Reasons Why",
+            showStars: "4/5",
+            showGenre: "Drama | Suicide | Mystery",
+            showSeason: "7 Seasons"
+        },
+        {
+            showUrl: show2,
+            showName: "Apytical",
+            showStars: "3/5",
+            showGenre: "Story | Family | Mystery",
+            showSeason: "4 Seasons"
+        },
+        {
+            showUrl: show3,
+            showName: "Devil advocate",
+            showStars: "5/5",
+            showGenre: "Devil | Action | Geek",
+            showSeason: "1 Seasons"
+        },
+
+        {
+            showUrl: show4,
+            showName: "Resident Evil 2",
+            showStars: "4/5",
+            showGenre: "Action | Adult | Sci-fi",
+            showSeason: "2 Seasons"
+        },
+        {
+            showUrl: show5,
+            showName: "Rick and Morty",
+            showStars: "5/5",
+            showGenre: "Drama | Dark | Mystery",
+            showSeason: "5 Seasons"
+        },
+        {
+            showUrl: show2,
+            showName: "Apytical",
+            showStars: "3/5",
+            showGenre: "Story | Family | Mystery",
+            showSeason: "4 Seasons"
+        },
+        {
+            showUrl: show3,
+            showName: "Devil advocate",
+            showStars: "5/5",
+            showGenre: "Devil | Action | Geek",
+            showSeason: "1 Seasons"
+        },
 
     ];
 
