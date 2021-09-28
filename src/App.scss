@@ -7,12 +7,7 @@ $theme-red :#ec0000;
   src: url("../src/screens/assets/Lato-Light.ttf");
 }
 
-:root{
-  background-color: $base;
-  
-}
-
-
+:root{background-color: $base;padding-bottom: 20px;}
 
 .base-flex{
   display: flex;
@@ -32,9 +27,7 @@ $theme-red :#ec0000;
   cursor: pointer;
   transition: ease 0.5s;
 
-  span{
-    margin-left: 8px;
-  }
+  span{margin-left: 8px;}
 }
 
 .primary-btn:hover,.primary-btn:visited{
@@ -62,9 +55,7 @@ $theme-red :#ec0000;
   z-index: 2;
  
 
-  .nav-bar-div{
-    flex-direction: row;
-    width: 100%;
+  .nav-bar-div{flex-direction: row;width: 100%;
 
     img.logo{width: 120px;}
 
@@ -80,16 +71,8 @@ $theme-red :#ec0000;
      }
 
     a:visited{color: darkgray;}
-    
-
-    a:hover{
-      color: darkgray;
-      transition: ease 0.5s;
-    }
-
-
+    a:hover{color: darkgray;transition: ease 0.5s;}
     a.user-links{
-
       padding: 10px;
       width: auto;
       margin-right: 10px;
@@ -100,7 +83,6 @@ $theme-red :#ec0000;
   .logo-holder{width: 40%;}
   .nav-link-holder{justify-content: flex-start;}
   .logout-holder{justify-content: flex-end;}
-
 }
 
 .main-body{
@@ -108,8 +90,6 @@ $theme-red :#ec0000;
   justify-content: flex-start;
   flex-direction: column;
   font-family: lato-light;
-  
-  
 }
 
 
@@ -117,7 +97,6 @@ $theme-red :#ec0000;
   width: 100%;
   height: 590px;
   overflow: hidden;
-  
 
   .banner-img-holder{height: 100%;width: 100%;
     img{width: 100%; height: 100%}
@@ -143,10 +122,7 @@ $theme-red :#ec0000;
         width: 50%;
         justify-content: flex-start;
 
-        span{
-          margin: 0px 5px;
-
-        }
+        span{margin: 0px 5px;}
       }
     }
 
@@ -161,20 +137,11 @@ $theme-red :#ec0000;
   margin-bottom: 10px;
 
   .grid-wrapper{
-   
-   
    flex-direction: column;
     align-items: flex-start;
     width: 95%;
-    
     font-size: 1.1rem;
-  
-    .grid-head{
-      width: 100%;
-    justify-content: space-between;
-
-      
-    }
+    .grid-head{width: 100%;justify-content: space-between;}
 
     .grid-holder{
       overflow: scroll;
@@ -182,88 +149,94 @@ $theme-red :#ec0000;
       width: 75rem;
       scroll-behavior: smooth;
 
-
-  
       .grid-card{
-        width: 270px;
-        height: 140px;
+        width: 150px;
+        height: 220px;
         cursor: pointer;
         background-color: darkgrey;
         margin: 5px 5px;      
         display: inline-block;
         overflow: hidden;
         transition: ease 0.5s;
-        border-radius: 10px;
+        border-radius: 5px;
         position: relative;
 
-        img{
-          width: 100%;
-          height: 100%;
-        }
+        img{ width: 100%;height: 100%;}
 
         .gird-data{
           position: absolute;
           bottom: 0px;
           width: 100%;
-   
           height: 100%;
           background: linear-gradient(359deg, #000000c9,#00000078);
           width: 95%;
-          justify-content: space-between;
+          flex-direction: column;
           padding: 0px 10px;
-          transform: translateY(50%);
+          transform: scale(50%);
           opacity: 0;
-          
-          transition: ease 0.5s;
+          border-radius: 5px;
+          transition: ease 0.2s;
 
-          div{
-            flex-direction: column;
-            align-items: flex-start;
-            align-self: flex-end;
-            padding-bottom: 10px;
-          }
 
           .play-show{
             cursor: pointer;
             color: white;
+            width: 100%;
+            align-items: center;}  
             
-          }
-          
-          span{
-            font-size: 0.8rem;
+            div{
+              flex-direction: column;
+              align-items: flex-start;
+              align-self: flex-end;
+              padding-bottom: 10px;
+  
+              width: 100%;
+     
+            }
+           
+
+          span{font-size: 1rem;
             margin: 0.2rem 0px;
-          }
-
-          h3{
-            margin: 2px;
-          }
         }
-
+          h3{margin: 2px;}
+        }
       }
 
       .grid-card:hover {
-        transform: scale(110%);
-        margin: 0px 20px;
-        transition: ease 0.5s;
+        transform: scale(95%);
     
+        transition: ease 0.2s;
       }
-
-      .grid-card:hover .gird-data{
-        transform: translateY(0%);
-        opacity: 1;
-      
-      }
-
-     
-
+      .grid-card:hover .gird-data{transform: scale(100%);opacity: 1;}
     }
-
       .grid-holder::-webkit-scrollbar {display: none;}
       .grid-holder {-ms-overflow-style: none; scrollbar-width: none;}
-  
   }
 
+}
 
+.loading-holder{
+  height: 100%;
+  width: 100%;
+  font-family: lato-light;
+  color: $theme-red;
+  flex-direction: column;
+  h3{
+    margin: 4rem;
+  }
 
+  img{
+    transform: translateY(-10%);
+    animation: floater 1.5s infinite;
+    transition: ease 0.5s;
+    width: 5rem;
+  }
 
+  
+  
+}
+
+@keyframes floater {
+  0%{transform: translateY(-10%);transition: ease 0.5s;}
+  50%{transform: translateY(10%);transition: ease 0.5s;}
 }

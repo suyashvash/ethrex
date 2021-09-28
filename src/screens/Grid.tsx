@@ -2,19 +2,25 @@ import { useRef } from 'react'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import PrimaryButton from './components/primaryButton'
-
+import { useHistory } from 'react-router'
 
 export default function ShowGrid(props: any) {
 
     const scrollRef = useRef<any>(null);
     const gridCard = useRef<any>(null);
+    // const history = useHistory();
+
 
     const gridScroller = (direction: any) => {
-        var scrollAmount = gridCard.current.offsetWidth;
+        var scrollAmount = gridCard.current.offsetWidth * 2.5;
         if (direction == "Next") { scrollRef.current.scrollLeft += scrollAmount }
         if (direction == "Prev") { scrollRef.current.scrollLeft -= scrollAmount }
     }
 
+
+    const cardTap = (cardData: any) => {
+        console.log(cardData)
+    }
 
 
     return (
@@ -32,20 +38,21 @@ export default function ShowGrid(props: any) {
 
                 <div className="grid-holder" ref={scrollRef}>
                     {props.data.map((item: any, index: any) => (
-                        <a ref={gridCard} key={index} className="grid-card">
-                            <img src={item.showUrl} alt="" />
+                        <a onClick={() => cardTap(item)} ref={gridCard} key={index} className="grid-card">
+                            <img src={item.mediaPic} alt="" />
                             <div className="base-flex gird-data">
-                                <div className="base-flex">
-                                    <h3>{item.showName}</h3>
-                                    <span>{item.showGenre}</span>
-                                    <span className="base-flex"><AiFillStar />{item.showStars} | {item.showSeason}</span>
+                                <div className="base-flex play-show">
+                                    <AiFillPlayCircle size={50} />
                                 </div>
-                                <div className="play-show">
-                                    <AiFillPlayCircle size={40} />
+                                <div className="base-flex">
+                                    <h3>{item.mediaName}</h3>
+                                    <span>{item.mediaGenre}</span>
+                                    <span className="base-flex"><AiFillStar />{item.mediaStar} | {item.mediaSeaon}</span>
                                 </div>
                             </div>
                         </a>
-                    ))}
+                    ))
+                    }
 
 
                 </div>
