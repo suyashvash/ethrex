@@ -1,19 +1,20 @@
-import logo from '../screens/assets/logo.png'
+
 import Banner from './components/banner'
-import { RiAccountCircleFill } from 'react-icons/ri'
+import NavBar from './components/navbar';
 import ShowGrid from './Grid';
 import { projectFirestore } from '../firebase/config';
-import { Link } from 'react-router-dom'
+
 import { useEffect, useState } from 'react';
 import popLogo from '../screens/assets/popLogo.png'
 
 
-export default function HomeScreen() {
+export default function HomeScreen(props: any) {
 
     const mediaRef = projectFirestore.collection('mediaList');
     const [mediaPack, setMediaPack] = useState<any>([]);
     const [trendingMedia, setTrendingMedia] = useState<any>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const genres = ['Action', 'Comedy', "Sci-fi", "Horror", "Crime"];
 
 
     useEffect(() => {
@@ -26,37 +27,46 @@ export default function HomeScreen() {
             querySnapshot.docs.forEach(doc => pack.push(doc.data()))
             const trendPack = pack.filter((item: any) => item.trending === true);
             setTrendingMedia(trendPack)
-            setMediaPack(pack);
+            if (props.mediaPage !== 'home') {
+                setMediaPack(pack.filter((item: any) => item.mediaType === props.mediaPage));
+            } else (setMediaPack(pack))
             setIsLoading(false)
         }).catch((error) => { alert("Error" + error) })
+    }
+
+    const genSorter = (movieData: any) => {
+        const mo: any = [];
+        const a = movieData.map((media: any) => media.mediaGenre.replace(/ /g, "").split("|"))
+        mo.push(a);
+        return mo;
     }
 
 
     return (
         !isLoading ?
             <>
-
                 <div className="base-flex main-body">
-                    <nav className="base-flex nav-bar">
-                        <div className="base-flex nav-bar-div logo-holder">
-                            <img className="logo" src={logo} alt="" />
-                        </div>
-                        <div className="base-flex nav-bar-div nav-link-holder">
-                            <a className="base-flex nav-links"> Home</a>
-                            <a className="base-flex nav-links">Movies</a>
-                            <a className="base-flex nav-links">Shows</a>
-                        </div>
-                        <div className="base-flex nav-bar-div logout-holder">
-                            <Link to={{ pathname: "/profile" }} className="base-flex nav-links user-links"> <RiAccountCircleFill size={28} /></Link>
-                        </div>
-                    </nav>
+                    <NavBar />
                     <Banner />
-                    {trendingMedia &&
+                    {trendingMedia && props.mediaPage === 'home' &&
                         <>
                             <ShowGrid title={"Trending Shows"} data={trendingMedia.filter((item: any) => item.mediaType == "Show")} />
                             <ShowGrid title={"Trending Movies"} data={trendingMedia.filter((item: any) => item.mediaType == "Movie")} />
                         </>
                     }
+
+                    {mediaPack && trendingMedia && props.mediaPage !== 'home' &&
+                        <>
+                            <ShowGrid title={`Trending ${props.mediaPage}s`} data={trendingMedia.filter((item: any) => item.mediaType == `${props.mediaPage}`)} />
+                            {genres.map((item: any) =>
+                                <ShowGrid title={`${item} ${props.mediaPage}`} data={mediaPack.filter((media: any) => media.mediaGenre.replace(/ /g, "").split("|").includes(item))} />
+                            )}
+                        </>
+
+                    }
+
+
+
 
                 </div>
             </>
@@ -66,7 +76,6 @@ export default function HomeScreen() {
                     <img src={popLogo} alt="" />
                     <h1>Loading Content</h1>
                 </div>
-
             </>
 
 

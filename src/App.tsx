@@ -14,7 +14,9 @@ function App() {
     <div className="base-flex App">
       <Router>
         <Switch>
-          <Route path="/" exact component={() => <HomeScreen />} />
+          <Route path="/" exact component={() => <HomeScreen mediaPage={'home'} />} />
+          <Route path="/movies" exact component={() => <HomeScreen mediaPage={'Movie'} />} />
+          <Route path="/shows" exact component={() => <HomeScreen mediaPage={'Show'} />} />
           <Route path="/add-data" exact component={() => <ProfileScreen />} />s
         </Switch>
       </Router>

@@ -59,7 +59,7 @@ $theme-red :#ec0000;
 
     img.logo{width: 120px;}
 
-    a{
+    a.nav-links{
       padding: 5px 10px;
       text-decoration: none;
       text-align: left;
@@ -68,9 +68,10 @@ $theme-red :#ec0000;
       transition: ease 0.5s;
       justify-content: flex-start;
       margin: 7px 1px;
+      color: white;
      }
 
-    a:visited{color: darkgray;}
+    a:visited{color: white;}
     a:hover{color: darkgray;transition: ease 0.5s;}
     a.user-links{
       padding: 10px;

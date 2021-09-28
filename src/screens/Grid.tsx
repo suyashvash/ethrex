@@ -2,13 +2,13 @@ import { useRef } from 'react'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import PrimaryButton from './components/primaryButton'
-import { useHistory } from 'react-router'
+
 
 export default function ShowGrid(props: any) {
 
     const scrollRef = useRef<any>(null);
     const gridCard = useRef<any>(null);
-    // const history = useHistory();
+
 
 
     const gridScroller = (direction: any) => {
@@ -37,6 +37,7 @@ export default function ShowGrid(props: any) {
 
 
                 <div className="grid-holder" ref={scrollRef}>
+
                     {props.data.map((item: any, index: any) => (
                         <a onClick={() => cardTap(item)} ref={gridCard} key={index} className="grid-card">
                             <img src={item.mediaPic} alt="" />
