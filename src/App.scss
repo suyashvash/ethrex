@@ -222,8 +222,9 @@ $theme-red :#ec0000;
   font-family: lato-light;
   color: $theme-red;
   flex-direction: column;
-  h3{
-    margin: 4rem;
+  h1{
+    margin: 1.2rem;
+    font-size: 1.5rem;
   }
 
   img{
@@ -232,12 +233,72 @@ $theme-red :#ec0000;
     transition: ease 0.5s;
     width: 5rem;
   }
-
-  
-  
 }
 
 @keyframes floater {
   0%{transform: translateY(-10%);transition: ease 0.5s;}
   50%{transform: translateY(10%);transition: ease 0.5s;}
+}
+
+.watch-screen{
+  font-family: lato-light;
+  width: 90%;
+  height: 90rem;
+  flex-direction: column;
+
+  .media-frameholder{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+
+    span{
+      width: 100%;
+      text-align: right;
+      font-weight: bold;
+    padding: 10px;
+    }
+
+    video{
+      background-color: darkgray;
+    }
+  }
+
+  .media-about{
+    margin: 50px 0px;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+
+    div{
+      width: 100%;
+      justify-content: flex-start;
+
+      .poster-card{
+        width: 150px;
+          height: 220px;
+          padding-right: 20px;
+          border-radius: 10px;
+          overflow: hidden;
+          
+          img{
+            width: 100%;
+            height: 100%;
+          }
+      }
+  
+      .about-holder{
+        width: 70%;
+        height: 100%;
+  
+        div{
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    }
+    
+    
+    
+  }
+
 }

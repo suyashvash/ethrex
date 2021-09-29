@@ -14,7 +14,7 @@ export default function HomeScreen(props: any) {
     const [mediaPack, setMediaPack] = useState<any>([]);
     const [trendingMedia, setTrendingMedia] = useState<any>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const genres = ['Action', 'Comedy', "Sci-fi", "Horror", "Crime"];
+    const genres = ['Action', 'Comedy', "Sci-fi", "Horror", "Crime", "Drama"];
 
 
     useEffect(() => {
@@ -34,13 +34,6 @@ export default function HomeScreen(props: any) {
         }).catch((error) => { alert("Error" + error) })
     }
 
-    const genSorter = (movieData: any) => {
-        const mo: any = [];
-        const a = movieData.map((media: any) => media.mediaGenre.replace(/ /g, "").split("|"))
-        mo.push(a);
-        return mo;
-    }
-
 
     return (
         !isLoading ?
@@ -58,11 +51,8 @@ export default function HomeScreen(props: any) {
                     {mediaPack && trendingMedia && props.mediaPage !== 'home' &&
                         <>
                             <ShowGrid title={`Trending ${props.mediaPage}s`} data={trendingMedia.filter((item: any) => item.mediaType == `${props.mediaPage}`)} />
-                            {genres.map((item: any) =>
-                                <ShowGrid title={`${item} ${props.mediaPage}`} data={mediaPack.filter((media: any) => media.mediaGenre.replace(/ /g, "").split("|").includes(item))} />
-                            )}
+                            {genres.map((item: any, index: any) => <ShowGrid title={`${item} ${props.mediaPage}s`} key={index} data={mediaPack.filter((media: any) => media.mediaGenre.replace(/ /g, "").split("|").includes(item))} />)}
                         </>
-
                     }
 
 
