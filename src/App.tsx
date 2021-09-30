@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 import HomeScreen from './screens/homeScreen';
-import ProfileScreen from './screens/components/profile';
-import WatchScreen from './screens/components/watchScreen';
+import ProfileScreen from './screens/profile';
+import WatchScreen from './screens/watchScreen';
 
 function App() {
   return (

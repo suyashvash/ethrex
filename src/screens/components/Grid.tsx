@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import { GrNext, GrPrevious } from 'react-icons/gr'
-import PrimaryButton from './components/primaryButton'
+import PrimaryButton from './primaryButton'
 import { useHistory } from 'react-router'
 
 export default function ShowGrid(props: any) {
@@ -20,13 +20,18 @@ export default function ShowGrid(props: any) {
 
 
     const cardTap = (cardData: any) => {
-        history.push({ pathname: '/watch', search: `?${cardData.mediaName.replace(" ", '-')}/`, hash: `${cardData.mediaId.replace(" ", "-")}`, state: cardData });
+        const routeData = {
+            genre: cardData.mediaGenre.replace(/ /g, "").split("|"),
+            docId: `${cardData.mediaType}.${cardData.mediaId.split(".")[1]}`
+        }
+        history.push({ pathname: '/watch', search: `?${cardData.mediaName.replace(" ", '-')}/`, hash: `${cardData.mediaId.replace(" ", "-")}`, state: routeData });
     }
 
 
     return (
         props.data.length !== 0 ?
-            <div key={props.key} className="base-flex show-grid">
+
+            <div key={props.gridKey} className="base-flex show-grid">
                 <div className="base-flex grid-wrapper">
                     <div className="base-flex grid-head">
                         <h3>{props.title}</h3>

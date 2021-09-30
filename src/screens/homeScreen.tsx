@@ -1,11 +1,11 @@
 
 import Banner from './components/banner'
 import NavBar from './components/navbar';
-import ShowGrid from './Grid';
+import ShowGrid from './components/Grid';
 import { projectFirestore } from '../firebase/config';
-
+import LoadingScreen from './components/loadingScreen';
 import { useEffect, useState } from 'react';
-import popLogo from '../screens/assets/popLogo.png'
+
 
 
 export default function HomeScreen(props: any) {
@@ -51,22 +51,22 @@ export default function HomeScreen(props: any) {
                     {mediaPack && trendingMedia && props.mediaPage !== 'home' &&
                         <>
                             <ShowGrid title={`Trending ${props.mediaPage}s`} data={trendingMedia.filter((item: any) => item.mediaType == `${props.mediaPage}`)} />
-                            {genres.map((item: any, index: any) => <ShowGrid title={`${item} ${props.mediaPage}s`} key={index} data={mediaPack.filter((media: any) => media.mediaGenre.replace(/ /g, "").split("|").includes(item))} />)}
+                            {genres.map((item: any, index: any) =>
+                                <ShowGrid
+                                    title={`${item} ${props.mediaPage}s`}
+                                    gridKey={index}
+                                    data={mediaPack.filter((media: any) =>
+                                        media.mediaGenre.replace(/ /g, "").split("|").includes(item)
+                                    )} />
+                            )
+                            }
                         </>
                     }
-
-
-
-
                 </div>
             </>
             :
-            <>
-                <div className="base-flex loading-holder">
-                    <img src={popLogo} alt="" />
-                    <h1>Loading Content</h1>
-                </div>
-            </>
+            <LoadingScreen />
+
 
 
     )
