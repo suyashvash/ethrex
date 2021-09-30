@@ -9,6 +9,7 @@ import {
 import HomeScreen from './screens/homeScreen';
 import ProfileScreen from './screens/profile';
 import WatchScreen from './screens/watchScreen';
+import SignUpScreen from './screens/signUp';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="/movies" exact component={() => <HomeScreen mediaPage={'Movie'} />} />
           <Route path="/shows" exact component={() => <HomeScreen mediaPage={'Show'} />} />
           <Route path="/watch" exact component={() => <WatchScreen />} />
-          <Route path="/add-data" exact component={() => <ProfileScreen />} />
+          <Route path="/profile" exact component={() => <SignUpScreen />} />
         </Switch>
       </Router>
 
