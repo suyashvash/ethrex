@@ -39,7 +39,25 @@ $theme-red :#ec0000;
   color: white;
 }
 
-.sm{width: fit-content;}
+.sm{
+  width: fit-content;
+  font-size: 0.8rem;
+  padding: 5px;
+}
+
+.white{
+  background-color: white;
+  color: black;
+  border: 2px solid transparent;
+  
+}
+
+.white:hover{
+  border: 2px solid red;
+  color: red;
+  background-color: transparent;
+}
+
 .auto-size{display: block;}
 
 .comment-text{
@@ -338,7 +356,7 @@ $theme-red :#ec0000;
   }
 }
 
-.signup-screen{
+.sign-screen{
   width: 100%;
   height: 100%;
   font-family: lato-light;
@@ -360,8 +378,8 @@ $theme-red :#ec0000;
 
 .signup-card,.signin-card{
   flex-direction: column;
-  width: 25rem;
-  height: 30rem;
+  width: 35%;
+  height: 80%;
   background-color: #262626ba;
   border-radius: 8px;
   text-align: left;
@@ -404,6 +422,7 @@ $theme-red :#ec0000;
         outline: none !important;
         border:none;
         font-size: 1rem;
+  
       }
 
       input[type=email],input[type=password]:focus{
@@ -430,4 +449,58 @@ $theme-red :#ec0000;
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+
+.profile-screen{
+  width: 100%;
+  height: 100%;
+
+  .profile-card{
+   
+    padding: 1.5rem;
+  width: 40%;
+    background-color: #262626ba;
+    border-radius: 5px;
+
+    .img-holder{
+      width: 50%;
+
+      img{
+        background-color: white;
+        width: 50%;
+        border-radius: 5px;
+        margin: 20px;
+      }
+      
+    }
+    
+    
+    div.profile-data{
+      align-items: flex-start;
+      
+      span{
+        font-size: 1.5rem;
+      }
+
+      span.email{
+        color: grey;
+        font-size: 1rem;
+      }
+      
+      div{
+        flex-direction: row;
+      }
+    }
+
+    
+
+    div{
+      flex-direction: column;
+    }
+
+    
+
+    
+  }
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loadingScreen";
 import PrimaryButton from "./components/primaryButton";
 import { FaCommentDots } from 'react-icons/fa';
+import { LoggedIn } from "./features/localState";
 
 export default function WatchScreen() {
 
@@ -89,7 +90,7 @@ export default function WatchScreen() {
                         <PrimaryButton title={"Add Comment"} size={'sm'} >
                             <FaCommentDots />
                         </PrimaryButton>
-                        <span className="login-alert-text">Login required !</span>
+                        {LoggedIn() && <span className="login-alert-text">Login required !</span>}
                     </div>
                 </div>
 

@@ -1,88 +1,81 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { projectFirestore } from "../firebase/config";
+import LoadingScreen from "./components/loadingScreen";
+import PrimaryButton from "./components/primaryButton";
+import { UserEmail } from "./features/localState";
+import { getAuth, sendPasswordResetEmail, signOut, deleteUser } from "firebase/auth";
+import { BiLogOut } from 'react-icons/bi'
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { setUserLogOutState } from "./features/userSlice";
+
 
 export default function ProfileScreen() {
 
+    const [userDetails, setUserDetails] = useState<any>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const userRef = projectFirestore.collection('users')
 
+    const userEmail = UserEmail();
+    const auth = getAuth();
+    const user: any = auth.currentUser;
+    const history = useHistory()
+    const dispatch = useDispatch();
 
-    const [name, setName] = useState<string>('');
-    const [bio, setBio] = useState<string>('');
-    const [picUrl, setPicUrl] = useState<string>('');
-    const [stars, setStars] = useState<string>('');
-    const [gen, setGen] = useState<string>('');
-    const [season, setSeason] = useState<string>('');
-    const [videoLink, setVideoLink] = useState<string>('');
-    const [mediaType, setMediaType] = useState<string>('');
+    useEffect(() => getUser(), [])
 
-
-    const mediaSet = projectFirestore.collection('mediaList');
-
-
-    const mediaUpload = (e: any) => {
-
-        const time = Date.now();
-
-        const data = {
-            mediaType: mediaType,
-            mediaName: name,
-            mediaId: `${name}.${time}`,
-            mediaBio: bio,
-            mediaPic: picUrl,
-            mediaStar: stars,
-            mediaGenre: gen,
-            mediaSeaon: season,
-            mediaVideo: videoLink,
-            mediaComments: [],
-            mediaLikes: [],
-            trending: false,
-        }
-        if (mediaType === "Movie" || mediaType === "Show") {
-            mediaSet.doc(`${mediaType}.${time}`).set(data)
-                .then(() => { alert("Movie Upload Sucess") })
-                .catch((error) => { alert("Error" + error) })
-        } else { alert("Invalid Type") }
-
-        e.preventDefault()
+    const getUser = () => {
+        let pack: any = [];
+        userRef.doc(`${userEmail}`).onSnapshot((doc: any) => {
+            pack.push(doc.data())
+            setUserDetails(pack)
+            setIsLoading(false)
+        })
     }
 
+    const forgetPassword = () => {
+        sendPasswordResetEmail(auth, userEmail)
+            .then(() => { alert("A link to reset password has been sent to your email !") })
+            .catch((error: any) => { alert(error.message) })
+    }
+
+    const deleteAccount = () => {
+        deleteUser(user).then(() => {
+            dispatch(setUserLogOutState())
+            alert("Your Account has been Deleted")
+            history.push({ pathname: "/" })
+        }).catch((error) => alert(error.message));
+    }
+
+    const logout = () => {
+        signOut(auth).then(() => {
+            dispatch(setUserLogOutState())
+            alert("You have been logged out sucesfully !")
+            history.push({ pathname: "/" })
+        }).catch((error) => alert(error.message));
+    }
 
     return (
-        <div>
-            <h3>This is movie Uplaoder</h3>
-            <form >
-
-                <label htmlFor="type">Media Type</label><br />
-                <input type="text" onChange={(e) => setMediaType(e.target.value)} required={true} id="type" name="type" /><br />
-
-
-                <label htmlFor="mediaName">Media Name</label><br />
-                <input type="text" onChange={(e) => setName(e.target.value)} required={true} id="mediaName" name="mediaName" /><br />
-
-                <label htmlFor="mediaBio">Media Bio</label><br />
-                <input type="text" onChange={(e) => setBio(e.target.value)} required={true} id="mediaBio" name="mediaBio" /><br />
-
-                <label htmlFor="mediaPic">Media Pic Url</label><br />
-                <textarea onChange={(e) => setPicUrl(e.target.value)} required={true} id="mediaPic" name="mediaPic" /><br />
-
-                <label htmlFor="mediaStar">Media Stars</label><br />
-                <input type="number" max={5} onChange={(e) => setStars(e.target.value)} required={true} id="mediaStar" name="mediaStar" /><br />
-
-                <label htmlFor="mediaGen">Media Genre</label><br />
-                <input type="text" onChange={(e) => setGen(e.target.value)} required={true} id="mediaGen" name="mediaGen" /><br />
-
-                <label htmlFor="mediaSeason">Media Season</label><br />
-                <input type="number" onChange={(e) => setSeason(e.target.value)} required={true} id="mediaSeason" name="mediaSeason" /><br />
-
-                <label htmlFor="mediavideo">Media Video Link</label><br />
-                <input type="text" onChange={(e) => setVideoLink(e.target.value)} required={true} id="mediavideo" name="mediavideo" /><br />
-
-
-
-
-
-                <br />
-                <input type="submit" onClick={(e) => mediaUpload(e)} value="Submit" />
-            </form>
-        </div>
+        !isLoading ?
+            <div className="base-flex profile-screen">
+                <div className="base-flex profile-card">
+                    <div className="img-holder">
+                        <img src={userDetails[0].userPic} alt="" />
+                    </div>
+                    <div className="base-flex profile-data">
+                        <span>{userDetails[0].userName}</span>
+                        <span className="email">{userDetails[0].email}</span>
+                        <div className="base-flex">
+                            <PrimaryButton onClick={forgetPassword} title={"Forget Password"} size={'sm'} />
+                            <PrimaryButton onClick={deleteAccount} title={"Delete Account"} size={'sm'} />
+                        </div>
+                        <PrimaryButton onClick={logout} title={"Log Out"} color={"white"} size={'sm'}>
+                            <BiLogOut size={20} />
+                        </PrimaryButton>
+                    </div>
+                </div>
+            </div>
+            :
+            <LoadingScreen />
     )
 }
