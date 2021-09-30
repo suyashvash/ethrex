@@ -39,6 +39,11 @@ $theme-red :#ec0000;
   color: white;
 }
 
+.disabled{
+  background-color: #9e0000;
+  cursor: not-allowed;
+}
+
 .sm{
   width: fit-content;
   font-size: 0.8rem;
@@ -60,20 +65,7 @@ $theme-red :#ec0000;
 
 .auto-size{display: block;}
 
-.comment-text{
-  padding: 10px;
-  width: 40%;
-  height: 90px;
-  border-radius: 8px;
-  font-size: 1rem;
 
-}
-
-.comment-text:focus{
-    outline: none !important;
-    border:1px solid $theme-red;
-   
-}
 
 .App{
   background-color: $base;
@@ -347,6 +339,49 @@ $theme-red :#ec0000;
     
   }
 
+  .media-comment{
+    align-self: flex-start;
+    width: 50%;
+
+    .comment-text{
+      padding: 10px;
+      width: 80%;
+      height: 90px;
+      border-radius: 8px;
+      font-size: 1rem;
+    
+    }
+    
+    .comment-text:focus{
+        outline: none !important;
+        border:1px solid $theme-red;
+       
+    }
+
+    .comment-box{
+      border-bottom:2px solid #262626ba;
+      width: 80%;
+      margin:  20px 0px;
+      padding: 5px;
+      padding-bottom: 10px;
+      img{background-color: white;border-radius: 50%;width: 10%;}
+
+      .comment-holder{
+        padding-left: 5px;
+        margin-left: 5px;
+        flex-direction: column;
+        h4{margin: 4px;}
+        h4.comment{align-self: flex-start;margin-bottom: 8px;}
+        h4.comment-author{
+          color: grey;
+          align-self: flex-start;
+        }
+      }
+     
+    }
+  }
+  
+
 }
 
 
@@ -456,51 +491,39 @@ $theme-red :#ec0000;
   width: 100%;
   height: 100%;
 
+  .profile-card-holder{
+    flex-direction: column;
+    width: 40%;
+  }
+
   .profile-card{
-   
     padding: 1.5rem;
-  width: 40%;
+    width: 100%;
     background-color: #262626ba;
     border-radius: 5px;
 
     .img-holder{
       width: 50%;
-
       img{
         background-color: white;
         width: 50%;
         border-radius: 5px;
         margin: 20px;
       }
-      
     }
-    
     
     div.profile-data{
       align-items: flex-start;
-      
-      span{
-        font-size: 1.5rem;
-      }
-
-      span.email{
-        color: grey;
-        font-size: 1rem;
-      }
-      
-      div{
-        flex-direction: row;
-      }
+      span{font-size: 1.5rem;}
+      span.email{color: grey;font-size: 1rem;}
+      div{flex-direction: row;}
     }
+    div{flex-direction: column;}
+  }
 
-    
-
-    div{
-      flex-direction: column;
-    }
-
-    
-
-    
+  a{
+    width: 100%;
   }
 }
+
+

@@ -6,7 +6,7 @@ export default function NavBar() {
     return (
         <nav className="base-flex nav-bar">
             <div className="base-flex nav-bar-div logo-holder">
-                <img className="logo" src={logo} alt="" />
+                <img className="logo" src={logo} alt="Ehtrex Logo" />
             </div>
 
 

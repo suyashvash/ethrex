@@ -43,7 +43,7 @@ export default function ShowGrid(props: any) {
                     <div className="grid-holder" ref={scrollRef}>
                         {props.data.map((item: any, index: any) => (
                             <a onClick={() => cardTap(item)} ref={gridCard} key={index} className="grid-card">
-                                <img src={item.mediaPic} alt="" />
+                                <img src={item.mediaPic} alt="Movie/Show Grid Poster" />
                                 <div className="base-flex gird-data">
                                     <div className="base-flex play-show">
                                         <AiFillPlayCircle size={50} />
@@ -51,7 +51,7 @@ export default function ShowGrid(props: any) {
                                     <div className="base-flex">
                                         <h3>{item.mediaName}</h3>
                                         <span>{item.mediaGenre}</span>
-                                        <span className="base-flex"><AiFillStar />{item.mediaStar} | {item.mediaSeaon}</span>
+                                        <span className="base-flex"><AiFillStar />{item.mediaStar} | {item.mediaSeaon} {item.mediaType === "Movie" ? "hrs" : "Season"}</span>
                                     </div>
                                 </div>
                             </a>

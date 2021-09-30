@@ -15,6 +15,7 @@ export default function LoginScreen() {
     const [password, setPassword] = useState<string>('');
     const [loginErrors, setLoginErrors] = useState<string>('');
 
+
     const dispatch = useDispatch();
     const auth = getAuth();
     const history = useHistory();
@@ -69,7 +70,7 @@ export default function LoginScreen() {
         <div className="base-flex sign-screen">
             <div className={`base-flex signin-card ${signin}`}>
                 <div>
-                    <img src={logo} alt="" />
+                    <img src={logo} alt="Ethrex Logo cutout" />
                     <h2>Sign In</h2>
                 </div>
 
@@ -83,12 +84,12 @@ export default function LoginScreen() {
                         <PrimaryButton onClick={loginAccount} title={"Sign In"} />
                     </div>
                 </form>
-                <span>Need a Account? <a onClick={() => switchMode("Sign In")}>Sign Up</a></span>
+                <span>Need an Account? <a onClick={() => switchMode("Sign In")}>Sign Up</a></span>
             </div>
 
             <div className={`base-flex signup-card ${signUp}`}>
                 <div>
-                    <img src={logo} alt="" />
+                    <img src={logo} alt="Ethrex Logo Cutout" />
                     <h2>Sign Up</h2>
                 </div>
 
@@ -102,7 +103,7 @@ export default function LoginScreen() {
                         <PrimaryButton onClick={createAccount} title={"Create Account"} />
                     </div>
                 </form>
-                <span>Already have a Account? <a onClick={() => switchMode("Sign Up")}>Sign In</a></span>
+                <span>Already have an Account? <a onClick={() => switchMode("Sign Up")}>Sign In</a></span>
             </div>
 
 

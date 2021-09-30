@@ -11,6 +11,7 @@ import ProfileScreen from './screens/profile';
 import WatchScreen from './screens/watchScreen';
 import LoginScreen from './screens/loginScreen';
 import { LoggedIn } from './screens/features/localState';
+import AddDataScreen from './screens/addDataScreen';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path="/movies" exact component={() => <HomeScreen mediaPage={'Movie'} />} />
           <Route path="/shows" exact component={() => <HomeScreen mediaPage={'Show'} />} />
           <Route path="/watch" exact component={() => <WatchScreen />} />
-          <Route path="/login" exact component={() => <LoginScreen />} />
+          <Route path="/add-data" exact component={() => <AddDataScreen />} />
+          <Route path="/login" exact component={() => LoggedIn() ? <LoginScreen /> : <ProfileScreen />} />
           <Route path="/profile" exact component={() => LoggedIn() ? <ProfileScreen /> : <LoginScreen />} />
         </Switch>
       </Router>
