@@ -43,14 +43,14 @@ export default function HomeScreen(props: any) {
                     <Banner />
                     {trendingMedia && props.mediaPage === 'home' &&
                         <>
-                            <ShowGrid title={"Trending Shows"} data={trendingMedia.filter((item: any) => item.mediaType == "Show")} />
-                            <ShowGrid title={"Trending Movies"} data={trendingMedia.filter((item: any) => item.mediaType == "Movie")} />
+                            <ShowGrid title={"Trending Shows"} data={trendingMedia.filter((item: any) => item.mediaType === "Show")} />
+                            <ShowGrid title={"Trending Movies"} data={trendingMedia.filter((item: any) => item.mediaType === "Movie")} />
                         </>
                     }
 
                     {mediaPack && trendingMedia && props.mediaPage !== 'home' &&
                         <>
-                            <ShowGrid title={`Trending ${props.mediaPage}s`} data={trendingMedia.filter((item: any) => item.mediaType == `${props.mediaPage}`)} />
+                            <ShowGrid title={`Trending ${props.mediaPage}s`} data={trendingMedia.filter((item: any) => item.mediaType === `${props.mediaPage}`)} />
                             {genres.map((item: any, index: any) =>
                                 <ShowGrid
                                     title={`${item} ${props.mediaPage}s`}

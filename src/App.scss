@@ -27,7 +27,10 @@ $theme-red :#ec0000;
   cursor: pointer;
   transition: ease 0.5s;
 
-  span{margin-left: 8px;}
+  h4{
+    margin:0px;
+    margin-left: 8px;
+  }
 }
 
 .primary-btn:hover,.primary-btn:visited{
@@ -261,21 +264,29 @@ $theme-red :#ec0000;
 .watch-screen{
   font-family: lato-light;
   width: 90%;
-  height: 90rem;
+ 
   flex-direction: column;
 
   .media-frameholder{
     height: 100%;
     width: 100%;
     flex-direction: column;
+  
 
-    span{
+    .media-head{
       width: 100%;
-      text-align: right;
-      font-weight: bold;
-      padding: 10px;
+      margin: 1rem;
+
+      span.now-playing{
+        width: 100%;
+        text-align: right;
+        font-weight: bold;
+        padding: 5px;
+      }
+  
     }
 
+    
     video{
       background-color: darkgray;
     }
@@ -318,4 +329,11 @@ $theme-red :#ec0000;
     
   }
 
+}
+
+
+.comment-drawer{
+  span.login-alert-text{
+    margin-left: 20px;
+  }
 }

@@ -36,7 +36,7 @@ export default function ProfileScreen() {
             mediaLikes: [],
             trending: false,
         }
-        if (mediaType == "Movie" || mediaType == "Show") {
+        if (mediaType === "Movie" || mediaType === "Show") {
             mediaSet.doc(`${mediaType}.${time}`).set(data)
                 .then(() => { alert("Movie Upload Sucess") })
                 .catch((error) => { alert("Error" + error) })

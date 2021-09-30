@@ -1,5 +1,5 @@
 import { useHistory } from "react-router"
-import { AiFillStar, AiFillLike } from 'react-icons/ai'
+import { AiFillStar, AiFillLike, AiFillHome } from 'react-icons/ai'
 import { projectFirestore } from '../firebase/config';
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loadingScreen";
@@ -36,7 +36,13 @@ export default function WatchScreen() {
         !isLoading ?
             <div className="base-flex watch-screen">
                 <div className="base-flex media-frameholder">
-                    <span>Now playing- {currentMedia[0].mediaName}</span>
+                    <div className="base-flex media-head">
+                        <PrimaryButton onClick={() => { history.push({ pathname: '/' }) }} title={"Home"} >
+                            <AiFillHome />
+                        </PrimaryButton>
+                        <span className="now-playing">Now playing- {currentMedia[0].mediaName}</span>
+                    </div>
+
                     <video width="100%" height="90%" controlsList="nodownload" controls src="https://firebasestorage.googleapis.com/v0/b/ethrex-watch.appspot.com/o/0b7077ce-f2bb-4cdc-84db-ee74c572bfe3.webm?alt=media&token=2ca75259-cd08-41bb-82d9-90a271aed8b3">
                         Your browser does not support the video tag.
                     </video>
@@ -58,6 +64,7 @@ export default function WatchScreen() {
                             <PrimaryButton title={`Likes : ${currentMedia[0].mediaLikes.length}`} size={'sm'} >
                                 <AiFillLike />
                             </PrimaryButton>
+
                         </div>
                     </div>
                 </div>
@@ -72,17 +79,18 @@ export default function WatchScreen() {
                                     <h4>{item.commentAuthor}</h4>
                                 </div>
                             ))
-
                             :
                             <div className="notification-plate">
                                 <h4 >No comments, be the first to start the discussion !</h4>
-                                <textarea className="comment-text" spellCheck placeholder="Such a great movie.."></textarea>
-                                <PrimaryButton title={"Add Comment"} size={'sm'} >
-                                    <FaCommentDots />
-                                </PrimaryButton>
                             </div>
                     }
-
+                    <textarea className="comment-text" spellCheck placeholder="Such a great movie.."></textarea>
+                    <div className="base-flex comment-drawer">
+                        <PrimaryButton title={"Add Comment"} size={'sm'} >
+                            <FaCommentDots />
+                        </PrimaryButton>
+                        <span className="login-alert-text">Login required !</span>
+                    </div>
                 </div>
 
             </div>

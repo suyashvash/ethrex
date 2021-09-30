@@ -14,8 +14,8 @@ export default function ShowGrid(props: any) {
 
     const gridScroller = (direction: any) => {
         var scrollAmount = gridCard.current.offsetWidth * 2.5;
-        if (direction == "Next") { scrollRef.current.scrollLeft += scrollAmount }
-        if (direction == "Prev") { scrollRef.current.scrollLeft -= scrollAmount }
+        if (direction === "Next") { scrollRef.current.scrollLeft += scrollAmount }
+        if (direction === "Prev") { scrollRef.current.scrollLeft -= scrollAmount }
     }
 
 
