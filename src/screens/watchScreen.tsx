@@ -39,17 +39,15 @@ export default function WatchScreen() {
     const addLike = () => {
         if (!likeDisabled || userEmail !== null) {
             const checkLike = currentMedia[0].mediaLikes.filter((item: any) => item.user === userEmail);
-            console.log(checkLike.length)
+
             if (checkLike.length === 1) {
                 alert("You already liked this movie")
             } else {
                 mediaRef.doc(routeData.docId).set(
                     { mediaLikes: [...currentMedia[0].mediaLikes, { user: `${userEmail}` }] },
                     { merge: true })
-
                 setReload(!refresh)
             }
-
         } else { alert("Login before Like") }
     }
 

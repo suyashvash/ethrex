@@ -36,7 +36,7 @@ export default function LoginScreen() {
             userName: email.split("@")[0],
             userId: `${email.split("@")[0]}.${time}`
         }
-        console.log(data.userPic)
+
 
         if (email === '' || password === '') { alert("Please fill all the fields") }
         else {

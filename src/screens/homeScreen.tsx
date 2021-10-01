@@ -54,7 +54,7 @@ export default function HomeScreen(props: any) {
                             {genres.map((item: any, index: any) =>
                                 <ShowGrid
                                     title={`${item} ${props.mediaPage}s`}
-                                    gridKey={index}
+                                    gridKey={index + index}
                                     data={mediaPack.filter((media: any) =>
                                         media.mediaGenre.replace(/ /g, "").split("|").includes(item)
                                     )} />

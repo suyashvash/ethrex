@@ -20,7 +20,7 @@ export default function Banner() {
         let pack: any = [];
         mediaRef.doc('showBanner').onSnapshot((doc: any) => {
             pack.push(doc.data())
-            console.log(pack)
+
             setBannerMedia(pack)
             setIsLoading(false)
         })
@@ -42,7 +42,7 @@ export default function Banner() {
                     <div className="base-flex banner-content">
                         <h1 className="banner-show-name">{bannerMedia[0].showName}</h1>
                         <div className="base-flex banner-show-stats">
-                            <span className="base-flex"><AiFillStar size={20} /><span>{bannerMedia[0].showStar}/5</span></span>
+                            <span className="base-flex"><AiFillStar size={20} /><span>{bannerMedia[0].showStars}/5</span></span>
                             <span className="base-flex">2018</span>
                             <span className="base-flex">{bannerMedia[0].showSeason} Seasons</span>
                         </div>
