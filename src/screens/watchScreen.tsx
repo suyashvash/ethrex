@@ -6,6 +6,7 @@ import LoadingScreen from "./components/loadingScreen";
 import PrimaryButton from "./components/primaryButton";
 import { FaCommentDots } from 'react-icons/fa';
 import { LoggedIn, UserEmail } from "./features/localState";
+import { RiAccountCircleFill } from "react-icons/ri";
 
 export default function WatchScreen() {
 
@@ -17,15 +18,13 @@ export default function WatchScreen() {
 
     const [currentMedia, setCurrentMedia] = useState<any>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [reload, setReload] = useState<boolean>(true);
+    const [refresh, setReload] = useState<boolean>(true);
     const likeDisabled = loggedIn ? false : true
     const commentDisabled = loggedIn ? false : true;
     const [comment, setComment] = useState<string>('');
 
 
-    useEffect(() => {
-        getCurrentMedia();
-    }, [reload])
+    useEffect(() => { getCurrentMedia() }, [])
 
     const getCurrentMedia = () => {
         let pack: any = [];
@@ -35,6 +34,7 @@ export default function WatchScreen() {
             setIsLoading(false)
         })
     }
+
 
     const addLike = () => {
         if (!likeDisabled || userEmail !== null) {
@@ -47,7 +47,7 @@ export default function WatchScreen() {
                     { mediaLikes: [...currentMedia[0].mediaLikes, { user: `${userEmail}` }] },
                     { merge: true })
 
-                setReload(!reload)
+                setReload(!refresh)
             }
 
         } else { alert("Login before Like") }
@@ -62,7 +62,7 @@ export default function WatchScreen() {
                     { mediaComments: [...currentMedia[0].mediaComments, { comment: `${comment}`, commentAuthor: `${userEmail}` }] },
                     { merge: true })
                 setComment('')
-                setReload(!reload)
+                setReload(!refresh)
             }
         } else { alert("Login before adding comments") }
     }
@@ -80,16 +80,19 @@ export default function WatchScreen() {
                             <AiFillHome />
                         </PrimaryButton>
                         <span className="now-playing">Now playing- {currentMedia[0].mediaName}</span>
+                        <PrimaryButton onClick={() => { history.push({ pathname: '/' }) }} title={loggedIn ? "Profile" : "Login"} >
+                            <RiAccountCircleFill size={22} />
+                        </PrimaryButton>
                     </div>
 
-                    <video width="100%" height="90%" controlsList="nodownload" controls src="https://firebasestorage.googleapis.com/v0/b/ethrex-watch.appspot.com/o/0b7077ce-f2bb-4cdc-84db-ee74c572bfe3.webm?alt=media&token=2ca75259-cd08-41bb-82d9-90a271aed8b3">
+                    <video width="100%" height="90%" controlsList="nodownload" controls src={currentMedia[0].mediaVideo.replace(/"/g, "")}>
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
                 <div className="base-flex media-about">
-                    <h2>About </h2>
-                    <div className="base-flex">
+                    <h2 className="media-head-text">About </h2>
+                    <div className="base-flex about-data">
                         <div className="poster-card">
                             <img src={currentMedia[0].mediaPic} alt="Current Movie/Show Poster" />
                         </div>
@@ -113,7 +116,7 @@ export default function WatchScreen() {
                 <div className="base-flex media-about media-comment">
                     <h2>Comments</h2>
 
-                    <textarea className="comment-text" value={comment} onInputCapture={(e: any) => setComment(e.target.value)} spellCheck placeholder="Such a great movie.."></textarea>
+                    <textarea className="comment-text" onInputCapture={(e: any) => setComment(e.target.value)} spellCheck placeholder="Such a great movie.."></textarea>
                     <div className="base-flex comment-drawer">
                         <PrimaryButton disabled={commentDisabled} onClick={addComment} title={"Add Comment"}  >
                             <FaCommentDots />
@@ -124,7 +127,7 @@ export default function WatchScreen() {
                         currentMedia[0].mediaComments.length !== 0 ?
                             currentMedia[0].mediaComments.map((item: any) => (
                                 <div className="base-flex comment-box">
-                                    <img src={`https://avatars.dicebear.com/api/identicon/:${item.commentAuthor.split("@")[0]}.svg`} alt="Comment Author Profile Pic" />
+                                    <img src={`https://avatars.dicebear.com/api/identicon/:${item.commentAuthor.split("@")[0]}.svg`} alt="Profile pic of the user who commented on the movie." />
                                     <div className="base-flex comment-holder">
                                         <h4 className="comment">{item.comment}</h4>
                                         <h4 className="comment-author">{item.commentAuthor}</h4>
@@ -140,6 +143,7 @@ export default function WatchScreen() {
                 </div>
 
             </div >
+
             :
             <LoadingScreen />
     )

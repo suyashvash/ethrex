@@ -122,6 +122,7 @@ $theme-red :#ec0000;
   justify-content: flex-start;
   flex-direction: column;
   font-family: lato-light;
+  padding-bottom: 2rem;
 }
 
 
@@ -178,7 +179,7 @@ $theme-red :#ec0000;
     .grid-holder{
       overflow: scroll;
       white-space: nowrap;
-      width: 75rem;
+      width: 100%;
       scroll-behavior: smooth;
 
       .grid-card{
@@ -286,10 +287,10 @@ $theme-red :#ec0000;
     .media-head{
       width: 100%;
       margin: 1rem;
+      justify-content: space-between;
+      align-items: center;
 
       span.now-playing{
-        width: 100%;
-        text-align: right;
         font-weight: bold;
         padding: 5px;
       }
@@ -298,7 +299,7 @@ $theme-red :#ec0000;
 
     
     video{
-      background-color: darkgray;
+      background-color: black;
     }
   }
 
@@ -527,3 +528,123 @@ $theme-red :#ec0000;
 }
 
 
+$mobile-tablet: 480px;
+@media (max-width: $mobile-tablet) {
+
+  .nav-bar{
+    padding: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  // .nav-link-holder,.logout-holder{
+  //   display: none;
+  // }
+
+  .grid-button-holder{
+    display: none;
+  }
+
+  .banner .banner-img-holder {
+    height: auto; 
+   width: auto; 
+  
+    transform: scale(2.5);
+}
+
+  .banner .banner-content-holder {
+    align-items: center;
+    .banner-content{
+      width: 90%;
+      padding: 0px;
+      .banner-show-stats{
+        width: auto;
+      }
+    }
+  }
+
+  .watch-screen .media-frameholder video{
+    margin-top: 2rem;
+  }
+
+  .watch-screen .media-about div .about-holder div{
+    flex-direction: row;
+    align-items: center;
+
+    a,span{
+      margin: 0px 5px;
+    }
+  }
+
+  .media-head{
+    span{
+      width: 50%;
+    text-align: center;
+  }
+
+  
+
+    .primary-btn{
+      h4{
+        display: none;
+      }
+    }
+  }
+
+  .media-about{
+    h2.media-head-text{
+      display: none;
+    }
+  }
+
+  .about-data{
+    flex-direction: column;
+  }
+
+  .watch-screen .media-about div .poster-card{
+    align-self: flex-start;
+  }
+
+  .watch-screen .media-about div .about-holder {
+  width: 95%;
+  height: auto;
+  align-self: flex-start;
+  }
+
+  .watch-screen .media-comment{
+    width: 100%;
+    margin-top: 0px;
+    .comment-text{
+      width: 90%;
+
+    }
+  }
+
+
+  .signin-card,.signup-card{
+    width: 90%;
+  }
+
+  .profile-screen .profile-card-holder{
+  width: 70%;
+    
+  }
+
+  .profile-screen .profile-card{
+    flex-direction: column;
+    
+  }
+
+  .profile-screen .profile-card div.profile-data{
+    width: 50%;
+    align-items: center;
+  }
+  .profile-screen .profile-card .img-holder{
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-screen .profile-card div.profile-data div{
+    margin-top: 1rem;
+  }
+
+}

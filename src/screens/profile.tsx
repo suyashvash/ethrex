@@ -23,7 +23,7 @@ export default function ProfileScreen() {
     const history = useHistory()
     const dispatch = useDispatch();
 
-    useEffect(() => getUser(), [])
+    useEffect(() => { getUser() }, [])
 
     const getUser = () => {
         let pack: any = [];
@@ -33,6 +33,8 @@ export default function ProfileScreen() {
             setIsLoading(false)
         })
     }
+
+
 
     const forgetPassword = () => {
         sendPasswordResetEmail(auth, userEmail)
@@ -56,7 +58,7 @@ export default function ProfileScreen() {
                 <div className="base-flex profile-card-holder">
                     <div className="base-flex profile-card">
                         <div className="img-holder">
-                            <img src={userDetails[0].userPic} alt="User profile pic" />
+                            <img src={userDetails[0].userPic} alt="Current user's profile pic" />
 
                         </div>
                         <div className="base-flex profile-data">

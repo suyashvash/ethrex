@@ -9,8 +9,8 @@ import { useHistory } from "react-router";
 
 export default function LoginScreen() {
 
-    const [signin, setSignin] = useState<any>('back');
-    const [signUp, setSignUp] = useState<any>('front');
+    const [signUpClass, setSignUpClass] = useState<any>('back');
+    const [signInClass, setSignInClass] = useState<any>('front');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [loginErrors, setLoginErrors] = useState<string>('');
@@ -22,8 +22,8 @@ export default function LoginScreen() {
 
 
     const switchMode = (currentMode: any) => {
-        if (currentMode === "Sign Up") { setSignUp('back'); setSignin('front'); }
-        else { setSignin('back'); setSignUp('front'); }
+        if (currentMode === "Sign Up") { setSignInClass('front'); setSignUpClass('back'); }
+        else { setSignUpClass('front'); setSignInClass('back'); }
         setEmail('');
         setPassword('');
     }
@@ -68,9 +68,9 @@ export default function LoginScreen() {
 
     return (
         <div className="base-flex sign-screen">
-            <div className={`base-flex signin-card ${signin}`}>
+            <div className={`base-flex signin-card ${signInClass}`}>
                 <div>
-                    <img src={logo} alt="Ethrex Logo cutout" />
+                    <img src={logo} alt="Ethrex popcorn bucket Logo  for signUP or Login card." />
                     <h2>Sign In</h2>
                 </div>
 
@@ -87,9 +87,9 @@ export default function LoginScreen() {
                 <span>Need an Account? <a onClick={() => switchMode("Sign In")}>Sign Up</a></span>
             </div>
 
-            <div className={`base-flex signup-card ${signUp}`}>
+            <div className={`base-flex signup-card ${signUpClass}`}>
                 <div>
-                    <img src={logo} alt="Ethrex Logo Cutout" />
+                    <img src={logo} alt="Ethrex popcorn bucket Logo  for signUP or Login card." />
                     <h2>Sign Up</h2>
                 </div>
 

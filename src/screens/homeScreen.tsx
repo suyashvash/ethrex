@@ -17,9 +17,7 @@ export default function HomeScreen(props: any) {
     const genres = ['Action', 'Comedy', "Sci-fi", "Horror", "Crime", "Drama"];
 
 
-    useEffect(() => {
-        getMedia();
-    }, [])
+    useEffect(() => { getMedia(); }, [])
 
     const getMedia = () => {
         let pack: any = [];
@@ -33,6 +31,7 @@ export default function HomeScreen(props: any) {
             setIsLoading(false)
         }).catch((error) => { alert("Error" + error) })
     }
+
 
 
     return (

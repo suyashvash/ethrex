@@ -35,7 +35,7 @@ export default function ShowGrid(props: any) {
                 <div className="base-flex grid-wrapper">
                     <div className="base-flex grid-head">
                         <h3>{props.title}</h3>
-                        <div className="base-flex">
+                        <div className="base-flex grid-button-holder">
                             <PrimaryButton onClick={() => gridScroller("Prev")} ><GrPrevious size={15} /></PrimaryButton>
                             <PrimaryButton onClick={() => gridScroller("Next")}><GrNext size={15} /></PrimaryButton>
                         </div>
@@ -43,7 +43,7 @@ export default function ShowGrid(props: any) {
                     <div className="grid-holder" ref={scrollRef}>
                         {props.data.map((item: any, index: any) => (
                             <a onClick={() => cardTap(item)} ref={gridCard} key={index} className="grid-card">
-                                <img src={item.mediaPic} alt="Movie/Show Grid Poster" />
+                                <img src={item.mediaPic} alt="Movie or Show Grid Thumbnail" />
                                 <div className="base-flex gird-data">
                                     <div className="base-flex play-show">
                                         <AiFillPlayCircle size={50} />
