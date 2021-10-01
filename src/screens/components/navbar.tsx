@@ -2,11 +2,13 @@ import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom'
 import { RiAccountCircleFill } from 'react-icons/ri'
 
-export default function NavBar() {
+export default function NavBar(props: any) {
     return (
+
         <nav className="base-flex nav-bar">
             <div className="base-flex nav-bar-div logo-holder">
                 <img className="logo" src={logo} alt="Ehtrex Logo for top nav bar" />
+                <h3>{props.mode}</h3>
             </div>
 
 

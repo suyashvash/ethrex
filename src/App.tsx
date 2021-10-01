@@ -12,6 +12,8 @@ import WatchScreen from './screens/watchScreen';
 import LoginScreen from './screens/loginScreen';
 import { LoggedIn } from './screens/features/localState';
 import AddDataScreen from './screens/addDataScreen';
+import BottomNav from './screens/components/bottomNav';
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           <Route path="/login" exact component={() => LoggedIn() ? <LoginScreen /> : <ProfileScreen />} />
           <Route path="/profile" exact component={() => LoggedIn() ? <ProfileScreen /> : <LoginScreen />} />
         </Switch>
+        <BottomNav />
       </Router>
 
     </div>

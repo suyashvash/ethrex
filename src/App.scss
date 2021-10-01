@@ -69,11 +69,14 @@ $theme-red :#ec0000;
 
 .App{
   background-color: $base;
-  height: 100vh;
   color: white;
+  height: 100vh;
   justify-content: space-between;
   flex-direction: column;
 }
+
+.App::-webkit-scrollbar {display: none;}
+.App {-ms-overflow-style: none; scrollbar-width: none;}
 
 
 .nav-bar{
@@ -112,7 +115,11 @@ $theme-red :#ec0000;
 
   }
 
-  .logo-holder{width: 40%;}
+  .logo-holder{width: 40%;
+    h3{
+      display: none;
+    }
+  }
   .nav-link-holder{justify-content: flex-start;}
   .logout-holder{justify-content: flex-end;}
 }
@@ -527,18 +534,59 @@ $theme-red :#ec0000;
   }
 }
 
+.bottom-nav{
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background: #262626;
+  .bottom-nav-link-holder{
+    width: 95%;
+    height: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+    a{
+      padding: 8%;
+    }
+  }
+}
+
+// .activeLink{
+//   background-color: $base;
+// }
+
 
 $mobile-tablet: 480px;
 @media (max-width: $mobile-tablet) {
 
+  .bottom-nav{
+  display: block;
+  }
+
+  .nav-bar .logo-holder{
+    width: 100%;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    align-items: center;
+    h3{
+      display: block;
+    }
+   
+  }
+
+  .main-body{
+    padding-bottom: 3rem;
+  }
+
   .nav-bar{
-    padding: 0.5rem;
+    padding: 0.5rem 0rem;
     justify-content: flex-start;
   }
 
-  // .nav-link-holder,.logout-holder{
-  //   display: none;
-  // }
+  .nav-link-holder,.logout-holder{
+    display: none;
+  }
 
   .grid-button-holder{
     display: none;

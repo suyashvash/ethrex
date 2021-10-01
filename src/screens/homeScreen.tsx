@@ -19,6 +19,7 @@ export default function HomeScreen(props: any) {
 
     useEffect(() => { getMedia(); }, [])
 
+
     const getMedia = () => {
         let pack: any = [];
         mediaRef.get().then(querySnapshot => {
@@ -38,7 +39,7 @@ export default function HomeScreen(props: any) {
         !isLoading ?
             <>
                 <div className="base-flex main-body">
-                    <NavBar />
+                    <NavBar mode={props.mediaPage} />
                     <Banner />
                     {trendingMedia && props.mediaPage === 'home' &&
                         <>
