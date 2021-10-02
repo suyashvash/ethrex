@@ -10,14 +10,11 @@ export default function ShowGrid(props: any) {
     const gridCard = useRef<any>(null);
     const history = useHistory();
 
-
-
     const gridScroller = (direction: any) => {
         var scrollAmount = gridCard.current.offsetWidth * 2.5;
         if (direction === "Next") { scrollRef.current.scrollLeft += scrollAmount }
         if (direction === "Prev") { scrollRef.current.scrollLeft -= scrollAmount }
     }
-
 
     const cardTap = (cardData: any) => {
         const routeData = {
@@ -27,10 +24,8 @@ export default function ShowGrid(props: any) {
         history.push({ pathname: '/watch', search: `?${cardData.mediaName.replace(" ", '-')}/`, hash: `${cardData.mediaId.replace(" ", "-")}`, state: routeData });
     }
 
-
     return (
         props.data.length !== 0 ?
-
             <div key={props.gridKey} className="base-flex show-grid">
                 <div className="base-flex grid-wrapper">
                     <div className="base-flex grid-head">

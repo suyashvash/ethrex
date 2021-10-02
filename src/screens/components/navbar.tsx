@@ -4,14 +4,11 @@ import { RiAccountCircleFill } from 'react-icons/ri'
 
 export default function NavBar(props: any) {
     return (
-
         <nav className="base-flex nav-bar">
             <div className="base-flex nav-bar-div logo-holder">
                 <img className="logo" src={logo} alt="Ehtrex Logo for top nav bar" />
                 <h3>{props.mode}</h3>
             </div>
-
-
             <div className="base-flex nav-bar-div nav-link-holder">
                 <Link to={{ pathname: "/" }} className="base-flex nav-links"> Home</Link>
                 <Link to={{ pathname: "/movies" }} className="base-flex nav-links"> Movies</Link>

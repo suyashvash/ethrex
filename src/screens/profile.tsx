@@ -19,7 +19,6 @@ export default function ProfileScreen() {
 
     const userEmail = UserEmail();
     const auth = getAuth();
-
     const history = useHistory()
     const dispatch = useDispatch();
 
@@ -34,15 +33,11 @@ export default function ProfileScreen() {
         })
     }
 
-
-
     const forgetPassword = () => {
         sendPasswordResetEmail(auth, userEmail)
             .then(() => { alert("A link to reset password has been sent to your email !") })
             .catch((error: any) => { alert(error.message) })
     }
-
-
 
     const logout = () => {
         signOut(auth).then(() => {
@@ -59,14 +54,12 @@ export default function ProfileScreen() {
                     <div className="base-flex profile-card">
                         <div className="img-holder">
                             <img src={userDetails[0].userPic} alt="Current user's profile pic" />
-
                         </div>
                         <div className="base-flex profile-data">
                             <span>{userDetails[0].userName}</span>
                             <span className="email">{userDetails[0].email}</span>
                             <div className="base-flex">
                                 <PrimaryButton onClick={forgetPassword} title={"Forget Password"} size={'sm'} />
-
                             </div>
                             <PrimaryButton onClick={logout} title={"Log Out"} color={"white"} size={'sm'}>
                                 <BiLogOut size={20} />
@@ -77,9 +70,6 @@ export default function ProfileScreen() {
                         <AiFillHome />
                     </PrimaryButton>
                 </div>
-
-
-
             </div>
             :
             <LoadingScreen />

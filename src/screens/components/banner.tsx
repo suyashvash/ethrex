@@ -1,9 +1,7 @@
-
 import { AiFillStar } from 'react-icons/ai'
 import PrimaryButton from './primaryButton'
 import { projectFirestore } from '../../firebase/config'
 import { useEffect, useState } from 'react';
-
 import { useHistory } from 'react-router';
 
 export default function Banner(props: any) {
@@ -13,7 +11,6 @@ export default function Banner(props: any) {
 
     const [bannerMedia, setBannerMedia] = useState<any>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-
 
     useEffect(() => { getBannerMedia() }, [])
 
@@ -49,16 +46,10 @@ export default function Banner(props: any) {
                         <p className="banner-show-bio">
                             {bannerMedia[0].showBio}
                         </p>
-
                         <PrimaryButton type={"Play"} title={"Watch Now"} onClick={() => cardTap(bannerMedia[0])} />
-
-
                     </div>
-
-
                 </div>
             </div>
-
             :
             <></>
     )

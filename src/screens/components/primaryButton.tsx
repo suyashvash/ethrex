@@ -8,5 +8,4 @@ export default function PrimaryButton(props: any) {
             {props.title && <h4>{props.title}</h4>}
         </a>
     )
-
 }

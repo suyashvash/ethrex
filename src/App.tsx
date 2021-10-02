@@ -30,7 +30,6 @@ function App() {
         </Switch>
         <BottomNav />
       </Router>
-
     </div>
   );
 }

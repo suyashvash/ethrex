@@ -1,12 +1,9 @@
-
 import Banner from './components/banner'
 import NavBar from './components/navbar';
 import ShowGrid from './components/Grid';
 import { projectFirestore } from '../firebase/config';
 import LoadingScreen from './components/loadingScreen';
 import { useEffect, useState } from 'react';
-
-
 
 export default function HomeScreen(props: any) {
 
@@ -16,9 +13,7 @@ export default function HomeScreen(props: any) {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const genres = ['Action', 'Comedy', "Sci-fi", "Horror", "Crime", "Drama"];
 
-
     useEffect(() => { getMedia(); }, [])
-
 
     const getMedia = () => {
         let pack: any = [];
@@ -32,8 +27,6 @@ export default function HomeScreen(props: any) {
             setIsLoading(false)
         }).catch((error) => { alert("Error" + error) })
     }
-
-
 
     return (
         !isLoading ?

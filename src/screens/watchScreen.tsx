@@ -39,7 +39,6 @@ export default function WatchScreen() {
     const addLike = () => {
         if (!likeDisabled || userEmail !== null) {
             const checkLike = currentMedia[0].mediaLikes.filter((item: any) => item.user === userEmail);
-
             if (checkLike.length === 1) {
                 alert("You already liked this movie")
             } else {
@@ -65,10 +64,6 @@ export default function WatchScreen() {
         } else { alert("Login before adding comments") }
     }
 
-
-
-
-
     return (
         !isLoading ?
             <div className="base-flex watch-screen">
@@ -82,12 +77,10 @@ export default function WatchScreen() {
                             <RiAccountCircleFill size={22} />
                         </PrimaryButton>
                     </div>
-
                     <video width="100%" height="90%" controlsList="nodownload" controls src={currentMedia[0].mediaVideo.replace(/"/g, "")}>
                         Your browser does not support the video tag.
                     </video>
                 </div>
-
                 <div className="base-flex media-about">
                     <h2 className="media-head-text">About </h2>
                     <div className="base-flex about-data">
@@ -102,46 +95,34 @@ export default function WatchScreen() {
                                 <PrimaryButton disabled={likeDisabled} onClick={addLike} title={`Likes : ${currentMedia[0].mediaLikes.length}`} size={'sm'} >
                                     <AiFillLike />
                                 </PrimaryButton>
-
                             </div>
                             <p>{currentMedia[0].mediaBio}</p>
-
-
                         </div>
                     </div>
                 </div>
-
                 <div className="base-flex media-about media-comment">
                     <h2>Comments</h2>
-
                     <textarea className="comment-text" onInputCapture={(e: any) => setComment(e.target.value)} spellCheck placeholder="Such a great movie.."></textarea>
                     <div className="base-flex comment-drawer">
                         <PrimaryButton disabled={commentDisabled} onClick={addComment} title={"Add Comment"}  >
                             <FaCommentDots />
                         </PrimaryButton>
                     </div>
-
-                    {
-                        currentMedia[0].mediaComments.length !== 0 ?
-                            currentMedia[0].mediaComments.map((item: any) => (
-                                <div className="base-flex comment-box">
-                                    <img src={`https://avatars.dicebear.com/api/identicon/:${item.commentAuthor.split("@")[0]}.svg`} alt="Profile pic of the user who commented on the movie." />
-                                    <div className="base-flex comment-holder">
-                                        <h4 className="comment">{item.comment}</h4>
-                                        <h4 className="comment-author">{item.commentAuthor}</h4>
-                                    </div>
-
+                    {currentMedia[0].mediaComments.length !== 0 ?
+                        currentMedia[0].mediaComments.map((item: any) => (
+                            <div className="base-flex comment-box">
+                                <img src={`https://avatars.dicebear.com/api/identicon/:${item.commentAuthor.split("@")[0]}.svg`} alt="Profile pic of the user who commented on the movie." />
+                                <div className="base-flex comment-holder">
+                                    <h4 className="comment">{item.comment}</h4>
+                                    <h4 className="comment-author">{item.commentAuthor}</h4>
                                 </div>
-                            ))
-                            :
-                            <div className="notification-plate">
-                                <h4 >No comments, be the first to start the discussion !</h4>
                             </div>
+                        ))
+                        :
+                        <div className="notification-plate"> <h4 >No comments, be the first to start the discussion !</h4></div>
                     }
                 </div>
-
             </div >
-
             :
             <LoadingScreen />
     )

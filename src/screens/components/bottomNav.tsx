@@ -6,9 +6,7 @@ import { BiCameraMovie } from 'react-icons/bi'
 import { useState } from 'react';
 
 export default function BottomNav() {
-
     const [activeLink, setActiveLink] = useState<string>('home');
-
 
     return (
         <div className="base-flex bottom-nav">
@@ -18,7 +16,6 @@ export default function BottomNav() {
                 <Link onClick={() => setActiveLink("shows")} to={{ pathname: "/shows" }} className={`base-flex bottom-nav-links ${activeLink === "shows" ? "activeLink" : ""}`}> <BiCameraMovie size={25} color={activeLink === "shows" ? "white" : "grey"} /></Link>
                 <Link onClick={() => setActiveLink("profile")} to={{ pathname: "/profile" }} className={`base-flex bottom-nav-links ${activeLink === "profile" ? "activeLink" : ""}`}> <RiAccountCircleFill size={26} color={activeLink === "profile" ? "white" : "grey"} /></Link>
             </div >
-
         </div >
     )
 }

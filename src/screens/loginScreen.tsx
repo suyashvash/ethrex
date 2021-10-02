@@ -15,11 +15,9 @@ export default function LoginScreen() {
     const [password, setPassword] = useState<string>('');
     const [loginErrors, setLoginErrors] = useState<string>('');
 
-
     const dispatch = useDispatch();
     const auth = getAuth();
     const history = useHistory();
-
 
     const switchMode = (currentMode: any) => {
         if (currentMode === "Sign Up") { setSignInClass('front'); setSignUpClass('back'); }
@@ -36,8 +34,6 @@ export default function LoginScreen() {
             userName: email.split("@")[0],
             userId: `${email.split("@")[0]}.${time}`
         }
-
-
         if (email === '' || password === '') { alert("Please fill all the fields") }
         else {
             createUserWithEmailAndPassword(auth, email, password)
@@ -73,7 +69,6 @@ export default function LoginScreen() {
                     <img src={logo} alt="Ethrex popcorn bucket Logo  for signUP or Login card." />
                     <h2>Sign In</h2>
                 </div>
-
                 <form action="" method="post">
                     <div>
                         <label htmlFor="fname">Your Email</label>
@@ -92,7 +87,6 @@ export default function LoginScreen() {
                     <img src={logo} alt="Ethrex popcorn bucket Logo  for signUP or Login card." />
                     <h2>Sign Up</h2>
                 </div>
-
                 <form action="" method="post">
                     <div>
                         <label htmlFor="fname">Email address</label>
@@ -105,8 +99,6 @@ export default function LoginScreen() {
                 </form>
                 <span>Already have an Account? <a onClick={() => switchMode("Sign Up")}>Sign In</a></span>
             </div>
-
-
         </div >
     )
 }
