@@ -3,10 +3,10 @@ import { AiFillStar } from 'react-icons/ai'
 import PrimaryButton from './primaryButton'
 import { projectFirestore } from '../../firebase/config'
 import { useEffect, useState } from 'react';
-import LoadingScreen from './loadingScreen';
+
 import { useHistory } from 'react-router';
 
-export default function Banner() {
+export default function Banner(props: any) {
 
     const mediaRef = projectFirestore.collection('mediaBanners');
     const history = useHistory()
@@ -14,13 +14,13 @@ export default function Banner() {
     const [bannerMedia, setBannerMedia] = useState<any>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+
     useEffect(() => { getBannerMedia() }, [])
 
     const getBannerMedia = () => {
         let pack: any = [];
-        mediaRef.doc('showBanner').onSnapshot((doc: any) => {
+        mediaRef.doc(`${props.mode !== "home" ? props.mode === "Show" ? "showBanner" : "movieBanner" : "homeBanner"}`).onSnapshot((doc: any) => {
             pack.push(doc.data())
-
             setBannerMedia(pack)
             setIsLoading(false)
         })
@@ -60,6 +60,6 @@ export default function Banner() {
             </div>
 
             :
-            <LoadingScreen />
+            <></>
     )
 }

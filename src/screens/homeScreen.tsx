@@ -40,7 +40,7 @@ export default function HomeScreen(props: any) {
             <>
                 <div className="base-flex main-body">
                     <NavBar mode={props.mediaPage} />
-                    <Banner />
+                    <Banner mode={props.mediaPage} />
                     {trendingMedia && props.mediaPage === 'home' &&
                         <>
                             <ShowGrid title={"Trending Shows"} data={trendingMedia.filter((item: any) => item.mediaType === "Show")} />

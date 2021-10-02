@@ -24,7 +24,7 @@ export default function WatchScreen() {
     const [comment, setComment] = useState<string>('');
 
 
-    useEffect(() => { getCurrentMedia() }, [])
+    useEffect(() => { getCurrentMedia() }, [refresh])
 
     const getCurrentMedia = () => {
         let pack: any = [];
@@ -78,7 +78,7 @@ export default function WatchScreen() {
                             <AiFillHome />
                         </PrimaryButton>
                         <span className="now-playing">Now playing- {currentMedia[0].mediaName}</span>
-                        <PrimaryButton onClick={() => { history.push({ pathname: '/' }) }} title={loggedIn ? "Profile" : "Login"} >
+                        <PrimaryButton onClick={() => { history.push({ pathname: '/profile' }) }} title={loggedIn ? "Profile" : "Login"} >
                             <RiAccountCircleFill size={22} />
                         </PrimaryButton>
                     </div>

@@ -71,7 +71,7 @@ $theme-red :#ec0000;
 
 .nav-bar{
   width: 100%;
-  background: linear-gradient(180deg, black,black, transparent);
+  background: linear-gradient(180deg, black, transparent);
   flex-direction: row;
   justify-content: space-around;
   position: absolute;
@@ -423,10 +423,11 @@ $theme-red :#ec0000;
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background: #262626;
   .bottom-nav-link-holder{
     width: 95%;
+    margin: auto;
     height: 100%;
     justify-content: space-between;
     overflow: hidden;
@@ -451,8 +452,10 @@ $mobile-tablet: 480px;
   .nav-bar{padding: 0.5rem 0rem;justify-content: flex-start;}
   .nav-link-holder,.logout-holder{display: none;}
   .grid-button-holder{display: none;}
-  .banner .banner-img-holder {height: auto; width: auto; transform: scale(2.5);}
-  .banner .banner-content-holder {align-items: center;  .banner-content{width: 90%;padding: 0px;  .banner-show-stats{width: auto;}}}
+  .show-grid{margin-bottom: 20px;}
+  .banner{align-items: center;}
+  .banner .banner-img-holder {height: auto; width: auto; transform: scale(3);}
+  .banner .banner-content-holder {align-items: center;height:90%;  .banner-content{width: 90%;padding: 0px;  .banner-show-stats{width: auto;}}}
   .watch-screen .media-frameholder video{margin-top: 2rem;}
   .watch-screen .media-about div .about-holder div{flex-direction: row;align-items: center;  a,span{margin: 0px 5px;}}
   .media-head{  span{width: 100%;text-align: center;}   .primary-btn{display: none;}}
