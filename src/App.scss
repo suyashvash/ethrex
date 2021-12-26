@@ -121,7 +121,7 @@ $theme-red :#ec0000;
   height: 590px;
   overflow: hidden;
 
-  .banner-img-holder{height: 100%;width: 100%;   img{width: 100%; height: 100%}} 
+  .banner-img-holder{height: 100vh;width: 100%;   img{width: 100%; height: 100%}} 
 
   .banner-content-holder{
     width: 100%;
@@ -453,7 +453,7 @@ $mobile-tablet: 480px;
   .nav-link-holder,.logout-holder{display: none;}
   .grid-button-holder{display: none;}
   .show-grid{margin-bottom: 20px;}
-  .banner{align-items: center;}
+  .banner{align-items: center;min-height: 100vh;}
   .banner .banner-img-holder {height: auto; width: auto; transform: scale(3);}
   .banner .banner-content-holder {align-items: center;height:90%;  .banner-content{width: 90%;padding: 0px;  .banner-show-stats{width: auto;}}}
   .watch-screen .media-frameholder video{margin-top: 2rem;}
